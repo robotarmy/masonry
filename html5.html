@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>HTML5 Worksheet</title>
+    <meta name="description" content="HTML5 worksheet">
+    <meta name="author" content="Curtis Schofield / DR9 / Ram9.cc">
+    <!-- mobile friendly : single page app - no zooming - device sensitive -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <!-- give myself a consistant element style model to work with -->
+    <link rel="stylesheet" href="reset.css">
+
+     <script type='text/javascript' src='jq.js'></script> 
+     <script type='text/javascript' src='mod.js'></script> 
+     <script type='text/javascript' src='jquery.masonry.js'></script> 
+     <script type='text/javascript'>
+     </script>
+ 
+  <!--
+      need to load blocking scripts mid document or in the head?
+      use async loading 
+
+      <script type='text/javascript'>
+        (function() {
+          var asyncScript = document.createElement('script');
+          asyncScript.src = 'http://code.jquery.com/jquery-1.7.2.js';
+          var thisScript = document.getElementsByTagName('script')[0];
+          thisScript.parentNode.insertBefore(asyncScript,thisScript);
+        })();
+      </script>
+      -->
+   <style>
+.chopper img {
+  width:300px;
+  height:300px;
+  float: left;
+}
+hr {
+  clear:both;
+}
+   </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+      </nav>
+    </header>
+    <section class='main-img-tag'>
+    </section>
+    <hr/>
+    <hr/>
+    <hr/>
+    <hr/>
+    <section class='main-img-tag-same-size'>
+    </section>
+    <hr/>
+    <hr/>
+    <hr/>
+    <hr/>
+    <section class='main-background-image'>
+    </section>
+    <hr/>
+    <hr/>
+    <hr/>
+    <hr/>
+    <section class='main-background-image-same-size'>
+    </section>
+    <hr/>
+    <hr/>
+    <hr/>
+    <hr/>
+    <footer>
+
+    </footer>
+    <!--
+      put blocking scripts at the bottom or use the async technique above!
+      <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.2.js'></script> 
+    -->
+  <script>
+// generate dom
+    var dir = "./img-mixed/"
+    var $dom = $(".main-img-tag")
+    for (var i=9;i;i--) {
+      var filename = dir + "c"+i+".png"
+      var $article = $("<article class='chopper'><img src='"+filename+"'><\/img><\/article>")
+      $dom.append($article);
+    }
+    $(function(){
+      $('#container').masonry({
+        // options
+        itemSelector : '.chopper',
+        columnWidth : 320
+      });
+    });
+
+
+    var dir = "./img-300/"
+    var $dom = $(".main-img-tag-same-size")
+    for (var i=9;i;i--) {
+      var filename = dir + "c"+i+".png"
+      var $article = $("<article class='chopper'><img src='"+filename+"'><\/img><\/article>")
+      $dom.append($article);
+    }
+    $(function(){
+      $('#container').masonry({
+        // options
+        itemSelector : '.chopper',
+        columnWidth : 320
+      });
+    });
+ 
+ 
+    var dir = "img-mixed/"
+    var $dom = $(".main-background-image")
+    for (var i=9;i;i--) {
+      var filename = dir + "c"+i+".png"
+      var $article = $("<article class='chopper' style='background-image: url("+ filename +"); height:300px; width:300px; float:left;background-size:cover;'><\/article>")
+      $dom.append($article);
+    }
+    $(function(){
+      $('#container').masonry({
+        // options
+        itemSelector : '.chopper',
+        columnWidth : 320
+      });
+    });
+ 
+ 
+    var dir = "img-300/"
+    var $dom = $(".main-background-image-same-size")
+    for (var i=9;i;i--) {
+      var filename = dir + "c"+i+".png"
+      var $article = $("<article class='chopper' style='background-image: url("+ filename +");height:300px; width:300px; float:left; background-size:cover; '><\/article>")
+      $dom.append($article);
+    }
+    $(function(){
+      $('#container').masonry({
+        // options
+        itemSelector : '.chopper',
+        columnWidth : 320
+      });
+    });
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  </script>
+  </body>
+</html>
+
